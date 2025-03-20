@@ -29,18 +29,29 @@ choice = st.sidebar.selectbox("📌 Choose an option", menu)
 
 # Function to add a book
 def add_book():
-    st.subheader("📖 Add a New Book")
-    title = st.text_input("📖 Book Title")
-    author = st.text_input("✍️ Author Name")
-    year = st.text_input("📅 Publication Year")
-    genre = st.text_input("📚 Genre")
-    read_status = st.radio("✅ Have you read this book?", ["Yes", "No"])
     
-    if st.button("➕ Add Book"):
-        cursor.execute("INSERT INTO books (title, author, year, genre, read_status) VALUES (?, ?, ?, ?, ?)",
-                       (title, author, year, genre, read_status))
-        conn.commit()
-        st.success(f"✅ '{title}' by {author} added successfully!")
+    col1, col2 = st.columns([2, 3]) 
+
+    with col1:  
+        st.image(["library.png", "library2.png"], caption=["A Cozy Library", "Manage Your Books Inventory"], use_container_width=True)
+
+
+
+
+    with col2:  
+        st.subheader("📖 Add a New Book")
+        title = st.text_input("📖 Book Title")
+        author = st.text_input("✍️ Author Name")
+        year = st.text_input("📅 Publication Year")
+        genre = st.text_input("📚 Genre")
+        read_status = st.radio("✅ Have you read this book?", ["Yes", "No"])
+
+        if st.button("➕ Add Book"):
+            cursor.execute("INSERT INTO books (title, author, year, genre, read_status) VALUES (?, ?, ?, ?, ?)",
+                           (title, author, year, genre, read_status))
+            conn.commit()
+            st.success(f"✅ '{title}' by {author} added successfully!")
+
 
 # Function to remove a book
 def remove_book():
