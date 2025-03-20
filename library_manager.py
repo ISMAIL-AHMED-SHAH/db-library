@@ -30,6 +30,13 @@ choice = st.sidebar.selectbox("📌 Choose an option", menu)
 # Function to add a book
 def add_book():
     
+    st.markdown(
+    """
+    <h2 style="text-align: center;">📖 Add a New Book</h2>
+    """,
+    unsafe_allow_html=True
+)
+
     col1, col2 = st.columns([2, 3]) 
 
     with col1:  
@@ -39,7 +46,6 @@ def add_book():
 
 
     with col2:  
-        st.subheader("📖 Add a New Book")
         title = st.text_input("📖 Book Title")
         author = st.text_input("✍️ Author Name")
         year = st.text_input("📅 Publication Year")
